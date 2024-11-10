@@ -20,11 +20,10 @@ public class API {
                 .when()
                 .post(url)
                 .then()
-                .log().all()
                 .statusCode(expectedStatusCode)
                 .extract().response();
 
-        System.out.println("POST Request Response: " + response.asPrettyString());
+//        System.out.println("POST Request Response: " + response.asPrettyString());
         return response;
     }
 
@@ -40,7 +39,6 @@ public class API {
                 .when()
                 .get(url)
                 .then()
-                .log().all()
                 .statusCode(expectedStatusCode)
                 .extract().response();
 
@@ -61,11 +59,10 @@ public class API {
                 .when()
                 .put(url)
                 .then()
-                .log().all()
                 .statusCode(expectedStatusCode)
                 .extract().response();
 
-        System.out.println("PUT Request Response: " + response.asPrettyString());
+//        System.out.println("PUT Request Response: " + response.asPrettyString());
         return response;
     }
 
@@ -82,11 +79,10 @@ public class API {
                 .when()
                 .patch(url)
                 .then()
-                .log().all()
                 .statusCode(expectedStatusCode)
                 .extract().response();
 
-        System.out.println("PATCH Request Response: " + response.asPrettyString());
+//        System.out.println("PATCH Request Response: " + response.asPrettyString());
         return response;
     }
 
@@ -101,11 +97,10 @@ public class API {
                 .when()
                 .delete(url)
                 .then()
-                .log().all()
                 .statusCode(expectedStatusCode)
                 .extract().response();
 
-        System.out.println("DELETE Request Response: " + response.asPrettyString());
+//        System.out.println("DELETE Request Response: " + response.asPrettyString());
         return response;
     }
 }

@@ -4,12 +4,12 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
 public class Albums extends API {
-    String url;
+    String base_url;
     String get_single_album_url;
 
-    public Albums(String url) {
-        this.url = url;
-        this.get_single_album_url = this.url + "albums/ALBUM_ID";
+    public Albums(String base_url) {
+        this.base_url = base_url;
+        this.get_single_album_url = this.base_url + "albums/ALBUM_ID";
     }
 
     public void getSingleAlbum(String albumID, String Market, int expectedStatusCode) {
