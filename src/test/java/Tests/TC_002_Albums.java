@@ -12,7 +12,7 @@ public class TC_002_Albums {
     void test_getSingleAlbum(String albumID, String Market,
                              String expectedStatusCode, String expectedResult,
                              String tokenType) {
-        Albums al = new Albums("https://api.spotify.com/v1");
+        Albums al = new Albums();
         Verification verification = new Verification();
         Response response = al.getSingleAlbum(albumID, Market, tokenType);
         Map<String, Object> response_verification = verification.ResponseVerification(

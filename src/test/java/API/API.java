@@ -6,6 +6,10 @@ import java.util.Map;
 import static io.restassured.RestAssured.*;
 
 public class API {
+    public String base_url;
+    public API(){
+        base_url = "https://api.spotify.com/v1";
+    }
 
     // POST Request
     public Response postRequest(String url, ContentType contentType,
