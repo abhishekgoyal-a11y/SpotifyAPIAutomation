@@ -25,8 +25,15 @@ public class DataProviders {
 
 	@DataProvider(name="LoginData")
 	public String [][] getLoginData() throws IOException
-	{	
+	{
 		return getData("Login");
-				
+
+	}
+
+	@DataProvider(name="AlbumsData")
+	public String [][] getAlbumsData() throws IOException
+	{
+		return getData("Albums");
+
 	}
 }
