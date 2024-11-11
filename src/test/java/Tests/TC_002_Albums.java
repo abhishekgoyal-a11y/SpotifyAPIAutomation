@@ -4,21 +4,26 @@ import EndPoints.Albums;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import testBase.BaseClass;
 import utilities.DataProviders;
 import java.util.Map;
 
-public class TC_002_Albums {
+public class TC_002_Albums extends BaseClass {
     @Test(dataProvider = "AlbumsData", dataProviderClass = DataProviders.class)
     void test_albumEndpoints(String albumID, String Market,
                              String expectedStatusCode, String expectedResult,
                              String tokenType, String method){
+        logger.info("TC_002_Albums Started");
         switch(method){
             case "test_getSingleAlbum":
+                logger.info("test_getSingleAlbum Started");
                 test_getSingleAlbum(albumID, Market, expectedStatusCode, expectedResult, tokenType);
+                logger.info("test_getSingleAlbum Finished");
                 break;
             default:
-                Assert.fail("Invalid method specified: " + method);
+                Assert.fail("Invalid Method Specified: " + method);
         }
+        logger.info("TC_002_Albums Finished");
 
     }
     void test_getSingleAlbum(String albumID, String Market,

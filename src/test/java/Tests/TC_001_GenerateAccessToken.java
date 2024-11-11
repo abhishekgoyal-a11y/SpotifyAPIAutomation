@@ -15,7 +15,7 @@ public class TC_001_GenerateAccessToken extends BaseClass {
                                   String clientSecret,
                                   String expectedStatusCode,
                                   String expectedResult) {
-        logger.info(" Started TC_001_GenerateAccessToken ");
+        logger.info("TC_001_GenerateAccessToken Started");
         AccessToken at = new AccessToken();
         Verification verification = new Verification();
         Response response = at.generateAccessToken(clientId, clientSecret);
@@ -33,6 +33,6 @@ public class TC_001_GenerateAccessToken extends BaseClass {
             System.out.println("ACCESS_TOKEN is generated:- " + access_token);
         }
         Assert.assertTrue(true);
-        logger.info(" Finished TC_001_GenerateAccessToken ");
+        logger.info("TC_001_GenerateAccessToken Finished");
     }
 }
