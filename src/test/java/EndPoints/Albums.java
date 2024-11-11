@@ -2,7 +2,7 @@ package EndPoints;
 import API.API;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-
+// Document link - https://developer.spotify.com/documentation/web-api/reference/get-an-album
 public class Albums extends API {
     String get_single_album_url;
 
