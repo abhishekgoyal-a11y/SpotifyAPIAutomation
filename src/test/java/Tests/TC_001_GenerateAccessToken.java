@@ -5,15 +5,17 @@ import EndPoints.AccessToken;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import testBase.BaseClass;
 import utilities.DataProviders;
 import java.util.Map;
 
-public class TC_001_GenerateAccessToken {
+public class TC_001_GenerateAccessToken extends BaseClass {
     @Test(dataProvider = "LoginData", dataProviderClass = DataProviders.class)
     void test_GenerateAccessToken(String clientId,
                                   String clientSecret,
                                   String expectedStatusCode,
                                   String expectedResult) {
+        logger.info(" Started TC_001_GenerateAccessToken ");
         AccessToken at = new AccessToken();
         Verification verification = new Verification();
         Response response = at.generateAccessToken(clientId, clientSecret);
@@ -31,5 +33,6 @@ public class TC_001_GenerateAccessToken {
             System.out.println("ACCESS_TOKEN is generated:- " + access_token);
         }
         Assert.assertTrue(true);
+        logger.info(" Finished TC_001_GenerateAccessToken ");
     }
 }
