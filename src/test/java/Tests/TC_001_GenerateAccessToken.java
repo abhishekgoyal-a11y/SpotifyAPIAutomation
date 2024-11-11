@@ -11,11 +11,12 @@ import java.util.Map;
 
 public class TC_001_GenerateAccessToken extends BaseClass {
     @Test(dataProvider = "LoginData", dataProviderClass = DataProviders.class)
-    void test_GenerateAccessToken(String clientId,
+    void test_GenerateAccessToken(String testCaseNumber,
+                                  String clientId,
                                   String clientSecret,
                                   String expectedStatusCode,
                                   String expectedResult) {
-        logger.info("TC_001_GenerateAccessToken Started");
+        logger.info(testCaseNumber+" Started");
         AccessToken at = new AccessToken();
         Verification verification = new Verification();
         Response response = at.generateAccessToken(clientId, clientSecret);
@@ -33,6 +34,6 @@ public class TC_001_GenerateAccessToken extends BaseClass {
             System.out.println("ACCESS_TOKEN is generated:- " + access_token);
         }
         Assert.assertTrue(true);
-        logger.info("TC_001_GenerateAccessToken Finished");
+        logger.info(testCaseNumber+" Finished");
     }
 }
