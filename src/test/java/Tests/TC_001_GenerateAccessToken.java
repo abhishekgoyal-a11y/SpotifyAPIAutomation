@@ -1,5 +1,6 @@
 package Tests;
 import API.TokenStore;
+import API.Verification;
 import EndPoints.AccessToken;
 import io.restassured.response.Response;
 import org.testng.Assert;
@@ -14,8 +15,10 @@ public class TC_001_GenerateAccessToken {
                                   String expectedStatusCode,
                                   String expectedResult) {
         AccessToken at = new AccessToken("https://accounts.spotify.com");
+        Verification verification = new Verification();
         Response response = at.generateAccessToken(clientId, clientSecret);
-        Map<String, Object> response_verification = at.ResponseVerification(response, expectedStatusCode, expectedResult);
+        Map<String, Object> response_verification = verification.ResponseVerification(
+                response, expectedStatusCode, expectedResult);
         String error_message = (String) response_verification.get("error_message");
         Boolean error_flag = (Boolean) response_verification.get("error_flag");
 //        System.out.println("Response :- " + response.getBody().asPrettyString());
