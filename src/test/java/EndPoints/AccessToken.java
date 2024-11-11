@@ -11,11 +11,8 @@ public class AccessToken extends API {
         this.api_token_url = base_url+"/api/token";
     }
 
-    public String generateAccessToken(int expectedStatusCode){
-
-        String clientId = "95e38f735fed4b2086167f8b8ef82fd6";
-        String clientSecret = "8081b234487e471082bf10068fbcf961";
-
+    public Response generateAccessToken(String clientId,
+                                      String clientSecret){
         Response response = RestAssured.given()
                 .contentType(ContentType.URLENC)
                 .formParam("grant_type", "client_credentials")
@@ -24,11 +21,7 @@ public class AccessToken extends API {
                 .when()
                 .post(api_token_url)
                 .then()
-                .statusCode(expectedStatusCode)
                 .extract().response();
-//        System.out.println("Response: " + response.getBody().asString());
-        String accessToken = response.jsonPath().getString("access_token");
-//        System.out.println("Access Token: " + accessToken);
-        return accessToken;
+        return response;
     }
 }
