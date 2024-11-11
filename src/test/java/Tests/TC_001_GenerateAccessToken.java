@@ -14,7 +14,7 @@ public class TC_001_GenerateAccessToken {
                                   String clientSecret,
                                   String expectedStatusCode,
                                   String expectedResult) {
-        AccessToken at = new AccessToken("https://accounts.spotify.com");
+        AccessToken at = new AccessToken();
         Verification verification = new Verification();
         Response response = at.generateAccessToken(clientId, clientSecret);
         Map<String, Object> response_verification = verification.ResponseVerification(
