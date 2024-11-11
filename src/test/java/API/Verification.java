@@ -36,6 +36,17 @@ public class Verification {
                         return result;
                     }
                 }
+                else if (error instanceof Map){
+                    String error_message = (String) ((Map<?, ?>) error).get("message");
+                    if (!error_message.equals(expectedResult)) {
+                        result.put(
+                                "error_message",
+                                "Error Message is Not Matching " + "Given " + error_message +
+                                        " Expected " + expectedResult);
+                        result.put("error_flag", false);
+                        return result;
+                    }
+                }
             }
         }
         return result;
