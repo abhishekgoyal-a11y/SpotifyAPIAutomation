@@ -9,13 +9,25 @@ import java.util.Map;
 
 public class TC_002_Albums {
     @Test(dataProvider = "AlbumsData", dataProviderClass = DataProviders.class)
+    void test_albumEndpoints(String albumID, String Market,
+                             String expectedStatusCode, String expectedResult,
+                             String tokenType, String method){
+        switch(method){
+            case "test_getSingleAlbum":
+                test_getSingleAlbum(albumID, Market, expectedStatusCode, expectedResult, tokenType);
+                break;
+            default:
+                Assert.fail("Invalid method specified: " + method);
+        }
+
+    }
     void test_getSingleAlbum(String albumID, String Market,
                              String expectedStatusCode, String expectedResult,
                              String tokenType) {
         Albums al = new Albums();
         Verification verification = new Verification();
         Response response = al.getSingleAlbum(albumID, Market, tokenType);
-//        System.out.println(response.getBody().asPrettyString());
+        System.out.println(response.getBody().asPrettyString());
         Map<String, Object> response_verification = verification.ResponseVerification(
                 response, expectedStatusCode, expectedResult);
         String error_message = (String) response_verification.get("error_message");
