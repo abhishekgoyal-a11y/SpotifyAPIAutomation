@@ -12,13 +12,12 @@ public class Albums extends API {
         this.get_single_album_url = this.base_url + "albums/ALBUM_ID";
     }
 
-    public void getSingleAlbum(String albumID, String Market, int expectedStatusCode) {
+    public Response getSingleAlbum(String albumID, String Market) {
         get_single_album_url = get_single_album_url.replace("ALBUM_ID", albumID);
         if (Market != null && !Market.isEmpty()) {
             get_single_album_url = get_single_album_url + "?market=" + Market;
         }
-        Response resp = getRequest(
-                get_single_album_url, ContentType.JSON,
-                expectedStatusCode);
+        Response response = getRequest(get_single_album_url, ContentType.JSON);
+        return response;
     }
 }
