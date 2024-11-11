@@ -44,7 +44,7 @@ public class ExcelUtility {
 		fi=new FileInputStream(path);
 		workbook=new XSSFWorkbook(fi);
 		sheet=workbook.getSheet(sheetName);
-		row=sheet.getRow(rownum);
+		row=sheet.getRow(0);
 		int cellcount=row.getLastCellNum();
 		workbook.close();
 		fi.close();

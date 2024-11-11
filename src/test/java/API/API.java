@@ -1,8 +1,11 @@
 package API;
+
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+
 import java.util.HashMap;
 import java.util.Map;
+
 import static io.restassured.RestAssured.*;
 
 public class API {
@@ -12,7 +15,7 @@ public class API {
                                 String payload, int expectedStatusCode) {
         String token = "";
         Map<String, String> headers = new HashMap<>();
-        headers.put("Authorization", "Bearer "+token);
+        headers.put("Authorization", "Bearer " + token);
         Response response = given()
                 .contentType(contentType)
                 .headers(headers)
@@ -32,7 +35,7 @@ public class API {
                                int expectedStatusCode) {
         String token = "";
         Map<String, String> headers = new HashMap<>();
-        headers.put("Authorization", "Bearer "+token);
+        headers.put("Authorization", "Bearer " + token);
         Response response = given()
                 .contentType(contentType)
                 .headers(headers)
@@ -51,7 +54,7 @@ public class API {
                                String payload, int expectedStatusCode) {
         String token = "";
         Map<String, String> headers = new HashMap<>();
-        headers.put("Authorization", "Bearer "+token);
+        headers.put("Authorization", "Bearer " + token);
         Response response = given()
                 .contentType(contentType)
                 .headers(headers)
@@ -71,7 +74,7 @@ public class API {
                                  String payload, int expectedStatusCode) {
         String token = "";
         Map<String, String> headers = new HashMap<>();
-        headers.put("Authorization", "Bearer "+token);
+        headers.put("Authorization", "Bearer " + token);
         Response response = given()
                 .contentType(contentType)
                 .headers(headers)
@@ -90,7 +93,7 @@ public class API {
     public Response deleteRequest(String url, ContentType contentType, int expectedStatusCode) {
         String token = "";
         Map<String, String> headers = new HashMap<>();
-        headers.put("Authorization", "Bearer "+token);
+        headers.put("Authorization", "Bearer " + token);
         Response response = given()
                 .contentType(contentType)
                 .headers(headers)
@@ -102,5 +105,42 @@ public class API {
 
 //        System.out.println("DELETE Request Response: " + response.asPrettyString());
         return response;
+    }
+
+
+    public Map<String, Object> ResponseVerification(
+            Response response,
+            String expectedStatusCode,
+            String expectedResult) {
+        Map<String, Object> result = new HashMap<>();
+        result.put("error_flag", true);
+        String givenStatusCode = String.valueOf(response.getStatusCode());
+        if (expectedStatusCode != null && !expectedStatusCode.isEmpty()) {
+            if (!givenStatusCode.equals(expectedStatusCode)) {
+                result.put(
+                        "error_message",
+                        "Status Code is Not Matching " + "Given " + givenStatusCode +
+                                " Expected " + expectedStatusCode);
+                result.put("error_flag", false);
+                return result;
+            }
+        }
+        if (expectedResult != null && !expectedResult.isEmpty()) {
+            Map<String, Object> jsonResponse = response.jsonPath().getMap("$");
+            if (jsonResponse.containsKey("error")){
+                Object error = jsonResponse.get("error");
+                if (error instanceof String){
+                    if (!error.equals(expectedResult)) {
+                        result.put(
+                                "error_message",
+                                "Error Message is Not Matching " + "Given " + error +
+                                        " Expected " + expectedResult);
+                        result.put("error_flag", false);
+                        return result;
+                    }
+                }
+            }
+        }
+        return result;
     }
 }
