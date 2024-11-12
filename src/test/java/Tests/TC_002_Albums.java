@@ -11,13 +11,17 @@ import java.util.Map;
 public class TC_002_Albums extends BaseClass {
     @Test(dataProvider = "AlbumsData", dataProviderClass = DataProviders.class)
     void test_albumEndpoints(String testCaseNumber,
-                             String albumID, String Market,
+                             String albumID, String albumIDs,
+                             String Market,
                              String expectedStatusCode, String expectedResult,
                              String tokenType, String method){
         logger.info(testCaseNumber+" Started");
         switch(method){
             case "test_getSingleAlbum":
                 test_getSingleAlbum(albumID, Market, expectedStatusCode, expectedResult, tokenType);
+                break;
+            case "test_getMultipleAlbums":
+                test_getMultipleAlbums(albumIDs, Market, expectedStatusCode, expectedResult, tokenType);
                 break;
             default:
                 Assert.fail("Invalid Method Specified: " + method);
@@ -31,6 +35,23 @@ public class TC_002_Albums extends BaseClass {
         Albums al = new Albums();
         Verification verification = new Verification();
         Response response = al.getSingleAlbum(albumID, Market, tokenType);
+//        System.out.println(response.getBody().asPrettyString());
+        Map<String, Object> response_verification = verification.ResponseVerification(
+                response, expectedStatusCode, expectedResult);
+        String error_message = (String) response_verification.get("error_message");
+        Boolean error_flag = (Boolean) response_verification.get("error_flag");
+        if (error_flag.equals(false)){
+            Assert.fail(error_message);
+        };
+        Assert.assertTrue(true);
+    }
+
+    void test_getMultipleAlbums(String albumIDs, String Market,
+                             String expectedStatusCode, String expectedResult,
+                             String tokenType) {
+        Albums al = new Albums();
+        Verification verification = new Verification();
+        Response response = al.getMultipleAlbums(albumIDs, Market, tokenType);
 //        System.out.println(response.getBody().asPrettyString());
         Map<String, Object> response_verification = verification.ResponseVerification(
                 response, expectedStatusCode, expectedResult);
