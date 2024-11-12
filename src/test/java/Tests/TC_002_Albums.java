@@ -14,17 +14,15 @@ public class TC_002_Albums extends BaseClass {
                              String albumID, String Market,
                              String expectedStatusCode, String expectedResult,
                              String tokenType, String method){
-        logger.info("TC_002_Albums Started");
+        logger.info(testCaseNumber+" Started");
         switch(method){
             case "test_getSingleAlbum":
-                logger.info(testCaseNumber+" Started");
                 test_getSingleAlbum(albumID, Market, expectedStatusCode, expectedResult, tokenType);
-                logger.info(testCaseNumber+" Finished");
                 break;
             default:
                 Assert.fail("Invalid Method Specified: " + method);
         }
-        logger.info("TC_002_Albums Finished");
+        logger.info(testCaseNumber+" Finished");
 
     }
     void test_getSingleAlbum(String albumID, String Market,
@@ -33,7 +31,7 @@ public class TC_002_Albums extends BaseClass {
         Albums al = new Albums();
         Verification verification = new Verification();
         Response response = al.getSingleAlbum(albumID, Market, tokenType);
-        System.out.println(response.getBody().asPrettyString());
+//        System.out.println(response.getBody().asPrettyString());
         Map<String, Object> response_verification = verification.ResponseVerification(
                 response, expectedStatusCode, expectedResult);
         String error_message = (String) response_verification.get("error_message");
