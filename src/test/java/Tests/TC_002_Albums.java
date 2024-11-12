@@ -10,15 +10,16 @@ import java.util.Map;
 
 public class TC_002_Albums extends BaseClass {
     @Test(dataProvider = "AlbumsData", dataProviderClass = DataProviders.class)
-    void test_albumEndpoints(String albumID, String Market,
+    void test_albumEndpoints(String testCaseNumber,
+                             String albumID, String Market,
                              String expectedStatusCode, String expectedResult,
                              String tokenType, String method){
         logger.info("TC_002_Albums Started");
         switch(method){
             case "test_getSingleAlbum":
-                logger.info("test_getSingleAlbum Started");
+                logger.info(testCaseNumber+" Started");
                 test_getSingleAlbum(albumID, Market, expectedStatusCode, expectedResult, tokenType);
-                logger.info("test_getSingleAlbum Finished");
+                logger.info(testCaseNumber+" Finished");
                 break;
             default:
                 Assert.fail("Invalid Method Specified: " + method);

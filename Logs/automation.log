@@ -1,8 +1,0 @@
-21:26:21.890 [main] INFO  Tests.TC_001_GenerateAccessToken - TC_001_GenerateAccessToken_01 Started
-21:26:25.934 [main] INFO  Tests.TC_001_GenerateAccessToken - TC_001_GenerateAccessToken_01 Finished
-21:26:25.950 [main] INFO  Tests.TC_001_GenerateAccessToken - TC_001_GenerateAccessToken_02 Started
-21:26:26.325 [main] INFO  Tests.TC_001_GenerateAccessToken - TC_001_GenerateAccessToken_02 Finished
-21:26:26.325 [main] INFO  Tests.TC_001_GenerateAccessToken - TC_001_GenerateAccessToken_03 Started
-21:26:26.729 [main] INFO  Tests.TC_001_GenerateAccessToken - TC_001_GenerateAccessToken_03 Finished
-21:26:26.744 [main] INFO  Tests.TC_001_GenerateAccessToken - TC_001_GenerateAccessToken_04 Started
-21:26:27.154 [main] INFO  Tests.TC_001_GenerateAccessToken - TC_001_GenerateAccessToken_04 Finished
