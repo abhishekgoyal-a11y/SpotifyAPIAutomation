@@ -5,8 +5,8 @@ import EndPoints.AccessToken;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import testBase.BaseClass;
-import utilities.DataProviders;
+import TestBase.BaseClass;
+import Utilities.DataProviders;
 import java.util.Map;
 
 public class TC_001_GenerateAccessToken extends BaseClass {

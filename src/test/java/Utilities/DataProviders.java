@@ -1,4 +1,4 @@
-package utilities;
+package Utilities;
 import org.testng.annotations.DataProvider;
 import java.io.IOException;
 
