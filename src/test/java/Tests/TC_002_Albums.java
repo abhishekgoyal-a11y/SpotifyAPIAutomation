@@ -15,9 +15,9 @@ public class TC_002_Albums extends BaseClass {
                              String Market,
                              String limit, String offset,
                              String expectedStatusCode, String expectedResult,
-                             String tokenType, String method){
-        logger.info(testCaseNumber+" Started");
-        switch(method){
+                             String tokenType, String method) {
+        logger.info(testCaseNumber + " Started");
+        switch (method) {
             case "test_getSingleAlbum":
                 test_getSingleAlbum(albumID, Market, expectedStatusCode, expectedResult, tokenType);
                 break;
@@ -27,12 +27,16 @@ public class TC_002_Albums extends BaseClass {
             case "test_getAlbumTracks":
                 test_getAlbumTracks(albumID, Market, limit, offset, expectedStatusCode, expectedResult, tokenType);
                 break;
+            case "test_saveAlbumForCurrentUser":
+                test_saveAlbumForCurrentUser(albumIDs, expectedStatusCode, expectedResult, tokenType);
+                break;
             default:
                 Assert.fail("Invalid Method Specified: " + method);
         }
-        logger.info(testCaseNumber+" Finished");
+        logger.info(testCaseNumber + " Finished");
 
     }
+
     void test_getSingleAlbum(String albumID, String Market,
                              String expectedStatusCode, String expectedResult,
                              String tokenType) {
@@ -44,7 +48,7 @@ public class TC_002_Albums extends BaseClass {
                 response, expectedStatusCode, expectedResult);
         String error_message = (String) response_verification.get("error_message");
         Boolean error_flag = (Boolean) response_verification.get("error_flag");
-        if (error_flag.equals(false)){
+        if (error_flag.equals(false)) {
             Assert.fail(error_message);
         };
         Assert.assertTrue(true);
@@ -61,15 +65,15 @@ public class TC_002_Albums extends BaseClass {
                 response, expectedStatusCode, expectedResult);
         String error_message = (String) response_verification.get("error_message");
         Boolean error_flag = (Boolean) response_verification.get("error_flag");
-        if (error_flag.equals(false)){
+        if (error_flag.equals(false)) {
             Assert.fail(error_message);
         };
         Assert.assertTrue(true);
     }
 
     void test_getAlbumTracks(String albumID, String Market, String limit, String offset,
-                                String expectedStatusCode, String expectedResult,
-                                String tokenType) {
+                             String expectedStatusCode, String expectedResult,
+                             String tokenType) {
         Albums al = new Albums();
         Verification verification = new Verification();
         Response response = al.getAlbumTracks(albumID, Market, limit, offset, tokenType);
@@ -78,7 +82,24 @@ public class TC_002_Albums extends BaseClass {
                 response, expectedStatusCode, expectedResult);
         String error_message = (String) response_verification.get("error_message");
         Boolean error_flag = (Boolean) response_verification.get("error_flag");
-        if (error_flag.equals(false)){
+        if (error_flag.equals(false)) {
+            Assert.fail(error_message);
+        };
+        Assert.assertTrue(true);
+    }
+
+    void test_saveAlbumForCurrentUser(String albumIDs,
+                                      String expectedStatusCode, String expectedResult,
+                                      String tokenType) {
+        Albums al = new Albums();
+        Verification verification = new Verification();
+        Response response = al.saveAlbumForCurrentUser(albumIDs, tokenType);
+        System.out.println(response.getBody().asPrettyString());
+        Map<String, Object> response_verification = verification.ResponseVerification(
+                response, expectedStatusCode, expectedResult);
+        String error_message = (String) response_verification.get("error_message");
+        Boolean error_flag = (Boolean) response_verification.get("error_flag");
+        if (error_flag.equals(false)) {
             Assert.fail(error_message);
         };
         Assert.assertTrue(true);
