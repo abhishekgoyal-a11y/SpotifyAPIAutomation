@@ -10,12 +10,12 @@ import java.util.Map;
 
 public class TC_002_Albums extends BaseClass {
     @Test(dataProvider = "AlbumsData", dataProviderClass = DataProviders.class)
-    void test_albumEndpoints(String testCaseNumber,
+    void test_albumEndpoints(String testCaseNumber, String method,
                              String albumID, String albumIDs,
                              String Market,
                              String limit, String offset,
                              String expectedStatusCode, String expectedResult,
-                             String tokenType, String method) {
+                             String tokenType) {
         logger.info(testCaseNumber + " Started");
         switch (method) {
             case "test_getSingleAlbum":
