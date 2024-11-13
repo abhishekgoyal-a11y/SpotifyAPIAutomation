@@ -6,27 +6,48 @@ import io.restassured.response.Response;
 public class Albums extends API {
     String get_single_album_url;
     String get_multiple_album_url;
+    String get_album_track_url;
 
     public Albums() {
         get_single_album_url = base_url + "/albums/ALBUM_ID";
         get_multiple_album_url = base_url + "/albums";
+        get_album_track_url = base_url + "/albums/ALBUM_ID/tracks";
     }
 
     public Response getSingleAlbum(String albumID, String Market, String tokenType) {
-        get_single_album_url = get_single_album_url.replace("ALBUM_ID", albumID);
+        String url = get_single_album_url.replace("ALBUM_ID", albumID);
         if (Market != null && !Market.isEmpty()) {
-            get_single_album_url = get_single_album_url + "?market=" + Market;
+            url += "?market=" + Market;
         }
-        return getRequest(get_single_album_url, ContentType.JSON, tokenType);
+        return getRequest(url, ContentType.JSON, tokenType);
+    }
+    public Response getMultipleAlbums(String albumIDs, String Market, String tokenType) {
+        StringBuilder urlBuilder = new StringBuilder(get_multiple_album_url);
+        if (albumIDs != null && !albumIDs.isEmpty()) {
+            urlBuilder.append("?ids=").append(albumIDs);
+        }
+        if (Market != null && !Market.isEmpty()) {
+            urlBuilder.append("&market=").append(Market);
+        }
+        return getRequest(urlBuilder.toString(), ContentType.JSON, tokenType);
     }
 
-    public Response getMultipleAlbums(String albumIDs, String Market, String tokenType) {
-        if (!albumIDs.isEmpty()) {
-            get_multiple_album_url = get_multiple_album_url + "?ids=" + albumIDs;
-        }
+    public Response getAlbumTracks(String albumID, String Market, String limit, String offset, String tokenType) {
+        String url = get_album_track_url.replace("ALBUM_ID", albumID);
+        StringBuilder urlBuilder = new StringBuilder(url);
+        String Symbol = "?";
+
         if (Market != null && !Market.isEmpty()) {
-            get_multiple_album_url = get_multiple_album_url + "&market=" + Market;
+            urlBuilder.append(Symbol).append("market=").append(Market);
+            Symbol = "&";
         }
-        return getRequest(get_multiple_album_url, ContentType.JSON, tokenType);
+        if (limit != null && !limit.isEmpty()) {
+            urlBuilder.append(Symbol).append("limit=").append(limit);
+            Symbol = "&";
+        }
+        if (offset != null && !offset.isEmpty()) {
+            urlBuilder.append(Symbol).append("offset=").append(offset);
+        }
+        return getRequest(urlBuilder.toString(), ContentType.JSON, tokenType);
     }
 }
