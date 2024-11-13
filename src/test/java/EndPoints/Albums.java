@@ -8,12 +8,14 @@ public class Albums extends API {
     String get_multiple_album_url;
     String get_album_track_url;
     String save_album_for_current_user;
+    String get_new_releases_url;
 
     public Albums() {
         get_single_album_url = base_url + "/albums/ALBUM_ID";
         get_multiple_album_url = base_url + "/albums";
         get_album_track_url = base_url + "/albums/ALBUM_ID/tracks";
         save_album_for_current_user = base_url + "/me/albums";
+        get_new_releases_url = base_url + "/browse/new-releases";
     }
 
     public Response getSingleAlbum(String albumID, String Market, String tokenType) {
@@ -61,5 +63,19 @@ public class Albums extends API {
         }
         System.out.println(urlBuilder);
         return putRequest(urlBuilder.toString(), ContentType.JSON, "{}", tokenType);
+    }
+
+    public Response getNewReleases(String limit, String offset, String tokenType) {
+        StringBuilder urlBuilder = new StringBuilder(get_new_releases_url);
+        String Symbol = "?";
+
+        if (limit != null && !limit.isEmpty()) {
+            urlBuilder.append(Symbol).append("limit=").append(limit);
+            Symbol = "&";
+        }
+        if (offset != null && !offset.isEmpty()) {
+            urlBuilder.append(Symbol).append("offset=").append(offset);
+        }
+        return getRequest(urlBuilder.toString(), ContentType.JSON, tokenType);
     }
 }

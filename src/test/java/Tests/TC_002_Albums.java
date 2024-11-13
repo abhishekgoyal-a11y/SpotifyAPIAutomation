@@ -30,6 +30,9 @@ public class TC_002_Albums extends BaseClass {
             case "test_saveAlbumForCurrentUser":
                 test_saveAlbumForCurrentUser(albumIDs, expectedStatusCode, expectedResult, tokenType);
                 break;
+            case "test_getNewReleases":
+                test_getNewReleases(limit, offset, expectedStatusCode, expectedResult, tokenType);
+                break;
             default:
                 Assert.fail("Invalid Method Specified: " + method);
         }
@@ -95,6 +98,23 @@ public class TC_002_Albums extends BaseClass {
         Verification verification = new Verification();
         Response response = al.saveAlbumForCurrentUser(albumIDs, tokenType);
         System.out.println(response.getBody().asPrettyString());
+        Map<String, Object> response_verification = verification.ResponseVerification(
+                response, expectedStatusCode, expectedResult);
+        String error_message = (String) response_verification.get("error_message");
+        Boolean error_flag = (Boolean) response_verification.get("error_flag");
+        if (error_flag.equals(false)) {
+            Assert.fail(error_message);
+        };
+        Assert.assertTrue(true);
+    }
+
+    void test_getNewReleases(String limit, String offset,
+                             String expectedStatusCode, String expectedResult,
+                             String tokenType) {
+        Albums al = new Albums();
+        Verification verification = new Verification();
+        Response response = al.getNewReleases(limit, offset, tokenType);
+//        System.out.println(response.getBody().asPrettyString());
         Map<String, Object> response_verification = verification.ResponseVerification(
                 response, expectedStatusCode, expectedResult);
         String error_message = (String) response_verification.get("error_message");
