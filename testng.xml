@@ -7,6 +7,7 @@
         <classes>
             <class name="Tests.TC_001_GenerateAccessToken" />
             <class name="Tests.TC_002_Albums" />
+            <class name="Tests.TC_003_Artists" />
         </classes>
     </test>
 </suite>

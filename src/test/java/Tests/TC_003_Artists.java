@@ -8,7 +8,7 @@ import TestBase.BaseClass;
 import Utilities.DataProviders;
 import java.util.Map;
 
-public class TC_002_Artists extends BaseClass {
+public class TC_003_Artists extends BaseClass {
 
     @Test(dataProvider = "ArtistsData", dataProviderClass = DataProviders.class)
     void test_artistEndpoints(String testCaseNumber, String method,
@@ -48,6 +48,7 @@ public class TC_002_Artists extends BaseClass {
         Response response = artists.getSingleArtist(artistID, tokenType);
         Map<String, Object> response_verification = verification.ResponseVerification(
                 response, expectedStatusCode, expectedResult);
+//        System.out.println(response.getBody().asPrettyString());
         String error_message = (String) response_verification.get("error_message");
         Boolean error_flag = (Boolean) response_verification.get("error_flag");
         if (error_flag.equals(false)) {
