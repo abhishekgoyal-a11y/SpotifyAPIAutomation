@@ -36,4 +36,11 @@ public class DataProviders {
 		return getData("Albums");
 
 	}
+
+	@DataProvider(name="ArtistsData")
+	public String [][] getArtistsData() throws IOException
+	{
+		return getData("Artists");
+
+	}
 }
