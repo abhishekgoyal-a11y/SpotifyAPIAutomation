@@ -59,11 +59,6 @@ public class Artists extends API {
     public Response getArtistTopTracks(String artistID, String Market, String tokenType) {
         String url = get_artist_top_tracks_url.replace("ARTIST_ID", artistID);
         StringBuilder urlBuilder = new StringBuilder(url);
-        String Symbol = "?";
-
-        if (Market != null && !Market.isEmpty()) {
-            urlBuilder.append(Symbol).append("market=").append(Market);
-        }
 
         if (Market != null && !Market.isEmpty()) {
             urlBuilder.append("?market=").append(Market);
@@ -71,7 +66,7 @@ public class Artists extends API {
         return getRequest(urlBuilder.toString(), ContentType.JSON, tokenType);
     }
 
-    public Response getRelatedArtists(String artistID, String tokenType) {
+    public Response getArtistRelatedArtists(String artistID, String tokenType) {
         String url = get_related_artists_url.replace("ARTIST_ID", artistID);
         return getRequest(url, ContentType.JSON, tokenType);
     }

@@ -31,8 +31,8 @@ public class TC_003_Artists extends BaseClass {
             case "test_getArtistTopTracks":
                 test_getArtistTopTracks(artistID, Market, expectedStatusCode, expectedResult, tokenType);
                 break;
-            case "test_getRelatedArtists":
-                test_getRelatedArtists(artistID, expectedStatusCode, expectedResult, tokenType);
+            case "test_getArtistRelatedArtists":
+                test_getArtistRelatedArtists(artistID, expectedStatusCode, expectedResult, tokenType);
                 break;
             default:
                 Assert.fail("Invalid Method Specified: " + method);
@@ -106,12 +106,12 @@ public class TC_003_Artists extends BaseClass {
         Assert.assertTrue(true);
     }
 
-    void test_getRelatedArtists(String artistID,
-                                String expectedStatusCode, String expectedResult,
-                                String tokenType) {
+    void test_getArtistRelatedArtists(String artistID,
+                                      String expectedStatusCode, String expectedResult,
+                                      String tokenType) {
         Artists artists = new Artists();
         Verification verification = new Verification();
-        Response response = artists.getRelatedArtists(artistID, tokenType);
+        Response response = artists.getArtistRelatedArtists(artistID, tokenType);
         Map<String, Object> response_verification = verification.ResponseVerification(
                 response, expectedStatusCode, expectedResult);
         String error_message = (String) response_verification.get("error_message");
