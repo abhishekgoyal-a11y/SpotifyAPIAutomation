@@ -31,7 +31,7 @@ public class TC_001_GenerateAccessToken extends BaseClass {
         String access_token = response.jsonPath().get("access_token");
         if (access_token!=null && !access_token.isEmpty()){
             TokenStore.tokens_dict.put("ACCESS_TOKEN", access_token);
-            System.out.println("ACCESS_TOKEN is generated:- " + access_token);
+//            System.out.println("ACCESS_TOKEN is generated:- " + access_token);
         }
         Assert.assertTrue(true);
         logger.info(testCaseNumber+" Finished");
