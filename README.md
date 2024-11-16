@@ -133,17 +133,17 @@ Data-driven testing involves using different input datasets to validate the API'
 
 ## Tech Used are:-
 
-- **Java**
-- **Rest Assured**
-- **TestNG**
-- **Postman**
-- **Extent Report**
-- **Maven**
-- **Log4j**
-- **Jenkins**
-- **IntelliJ IDE**
-- **Git**
-- **GitHub**
+- Java
+- Rest Assured
+- TestNG
+- Postman
+- Extent Report
+- Maven
+- Log4j
+- Jenkins
+- IntelliJ IDE
+- Git
+- GitHub
 
 ---
 
