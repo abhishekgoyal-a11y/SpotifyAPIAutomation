@@ -144,3 +144,12 @@ Data-driven testing involves using different input datasets to validate the API'
 - **IntelliJ IDE**
 - **Git**
 - **GitHub**
+
+---
+
+## HTML Report
+
+![img_3](https://github.com/user-attachments/assets/fc22c465-ab71-4b45-a6e1-b8b5bf107182)
+![img_2](https://github.com/user-attachments/assets/d883fbcd-216e-4f26-aafd-a2e95b6f534b)
+![img_1](https://github.com/user-attachments/assets/2b94f096-f2a4-4286-8139-9ae8a3081349)
+![img](https://github.com/user-attachments/assets/c4eac93f-6c26-4bf2-a8f6-95d63469d921)
