@@ -1,5 +1,7 @@
 # API Testing for Spotify Web API
 
+![Presentation1](https://github.com/user-attachments/assets/cb1a4196-4dbb-4e91-aa68-87f9fd49bb9f)
+
 API Testing for **Spotify Web API** involves validating various endpoints to ensure they function as expected. This
 includes
 operations such as user authentication, fetching playlists, searching for tracks, managing playlists, checking
