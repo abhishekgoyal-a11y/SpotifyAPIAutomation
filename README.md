@@ -156,3 +156,8 @@ Data-driven testing involves using different input datasets to validate the API'
 ![img_2](https://github.com/user-attachments/assets/d883fbcd-216e-4f26-aafd-a2e95b6f534b)
 ![img_3](https://github.com/user-attachments/assets/fc22c465-ab71-4b45-a6e1-b8b5bf107182)
 
+---
+
+## Jenkins Result
+
+![screencapture-localhost-8080-job-SpotifyAPIAutomation-11-console-2024-11-18-12_06_55](https://github.com/user-attachments/assets/5a59ad07-fdae-4c69-a501-9a3e7ffcb52f)
